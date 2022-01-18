@@ -83,14 +83,14 @@
                 <div class="row gx-1 gx-lg-2">
                     <div class="col-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
-                            <option selected>[Por preço]</option>
+                            <option selected value="ppreco">[Por preço]</option>
                             <option value="asc">Ascendente</option>
                             <option value="des">Descendente</option>
                           </select>
                     </div>
                     <div class="col-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
-                            <option selected>[Por época]</option>
+                            <option selected value="pepoca">[Por época]</option>
                             <option value="jan">Janeiro</option>
                             <option value="fev">Fevereiro</option>
                             <option value="mar">Março</option>
@@ -258,9 +258,17 @@
 			  crossorigin="anonymous"></script>
         <script>
             $("select").change(function(){
-                alert("changed");
-                var seL = event.target.value;
-                $("." + seL.toString() ).addClass("d-none");
+                var catList = document.querySelectorAll(".CAT");
+                $(".PRODUTO").removeClass("d-none");
+                catList.forEach((i) => {
+                    let valor = i.value;
+                    console.log(valor);
+                    if (valor != "asc" || valor != "des"){
+                        if (valor != "[Por época]" || valor != "[Por preço]" || valor != "[Glúten]" || valor != "[Por fornecedor]" || valor != "[Por tipo de alimento]"){
+                            $(".PRODUTO:not("+"." + valor +")" ).addClass("d-none");
+                        }
+                    }
+                });
             });
         </script>
         <!-- Jquery -->
