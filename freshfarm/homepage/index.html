@@ -51,16 +51,16 @@
                     <div class="col mb-2 d-flex justify-content-center">
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Época Atual</button>
+                              <button class="nav-link BOU active" id="epoca" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Época Atual</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Vegetariano</button>
+                              <button class="nav-link BOU" id="veg" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Vegetariano</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Biológico</button>
+                              <button class="nav-link BOU" id="bio" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Biológico</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="btn btn-danger" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Promoções</button>
+                                <button class="btn btn-danger BOU" id="promo" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Promoções</button>
                               </li>
                           </ul>
                           
@@ -70,7 +70,7 @@
                     <div class="col-4 mb-2">
                         <div class="input-group mb-3">
                             <!-- Search Bar -->
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon1"><i class="fas fa-search"></i></button>
+                            <button class="btn btn-outline-secondary" type="button" id="search"><i class="fas fa-search"></i></button>
                             <input type="text" class="form-control" placeholder="Pesquisar" aria-label="Example text with button addon" aria-describedby="button-addon1">
                         </div>
                     </div>
@@ -107,21 +107,21 @@
                     </div>
                     <div class="col-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
-                            <option selected>[Glúten]</option>
+                            <option selected value="pgluten">[Glúten]</option>
                             <option value="cglut">Com glúten</option>
                             <option value="sglut">Sem glúten</option>
                           </select>
                     </div>
                     <div class="col-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
-                            <option selected>[Por fornecedor]</option>
+                            <option selected value="pfor">[Por fornecedor]</option>
                             <option value="for1">Fornecedor 1</option>
                             <option value="for2">Fornecedor 2</option>
                           </select>
                     </div>
                     <div class="col-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
-                            <option selected>[Por tipo de alimento]</option>
+                            <option selected value="palimento">[Por tipo de alimento]</option>
                             <option value="cereal">Cereais, pães e tubérculos</option>
                             <option value="horta">Hortaliças</option>
                             <option value="fruta">Frutas</option>
@@ -130,8 +130,8 @@
                           </select>
                     </div>
                 </div>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="PRODUTO col mb-5 jan fev mar abr mai jun jul ago set out nov dez cglut for1 cereal">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="plist">
+                    <div class="PRODUTO col mb-5 jan fev mar abr mai jun jul ago set out nov dez cglut for1 cereal epoca veg bio">
                         <div class="card h-80">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://hortaemcasa.pt/wp-content/uploads/2021/11/batata-assar_r5lqck.jpg" alt="..." />
@@ -139,9 +139,9 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Batatas</h5>
+                                    <h5 class="fw-bolder NOME">Batatas</h5>
                                     <!-- Product price-->
-                                    <span class="PRECO">1.49€</span>
+                                    <span class="PRECO">1.49</span><span>€</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -159,7 +159,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="PRODUTO col mb-5 jan fev mar abr jun jul ago set out nov dez sglut for1 horta">
+                    <div class="PRODUTO col mb-5 jan fev mar abr jun jul ago set out nov dez sglut for1 horta veg bio">
                         <div class="card h-80">
                             <!-- Product image-->
                             <img class="card-img-top" src="img\couve.jpg" alt="..." />
@@ -167,9 +167,9 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Couve</h5>
+                                    <h5 class="fw-bolder NOME">Couve</h5>
                                     <!-- Product price-->
-                                    <span class="PRECO">0.99€</span>
+                                    <span class="PRECO">0.99</span><span>€</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -186,7 +186,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="PRODUTO col mb-5 jan fev mar abr ago set out nov dez sglut for2">
+                    <div class="PRODUTO col mb-5 jan fev mar abr ago set out nov dez sglut for2 epoca bio veg">
                         <div class="card h-80">
                             <!-- Product image-->
                             <img class="card-img-top" src="img\maca.jpg" alt="..." />
@@ -194,9 +194,9 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Maçãs</h5>
+                                    <h5 class="fw-bolder NOME">Maçãs</h5>
                                     <!-- Product price-->
-                                    <span class="PRECO">1.99€</span>
+                                    <span class="PRECO">1.99</span><span>€</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -214,7 +214,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="PRODUTO col mb-5 jan fev mar abr mai jun jul ago set out nov dez cglut for1 horta">
+                    <div class="PRODUTO col mb-5 jan fev mar abr mai jun jul ago set out nov dez cglut for1 horta epoca veg bio">
                         <div class="card h-80">
                             <!-- Product image-->
                             <img class="card-img-top" src="img\cenoura.jpg" alt="..." />
@@ -222,9 +222,9 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">Cenouras</h5>
+                                    <h5 class="fw-bolder NOME">Cenouras</h5>
                                     <!-- Product price-->
-                                    <span class="PRECO">0.49€</span>
+                                    <span class="PRECO">0.49</span><span>€</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -257,18 +257,164 @@
 			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 			  crossorigin="anonymous"></script>
         <script>
-            $("select").change(function(){
-                var catList = document.querySelectorAll(".CAT");
+            $("select").change(function (){
                 $(".PRODUTO").removeClass("d-none");
-                catList.forEach((i) => {
-                    let valor = i.value;
-                    console.log(valor);
-                    if (valor != "asc" || valor != "des"){
-                        if (valor != "[Por época]" || valor != "[Por preço]" || valor != "[Glúten]" || valor != "[Por fornecedor]" || valor != "[Por tipo de alimento]"){
-                            $(".PRODUTO:not("+"." + valor +")" ).addClass("d-none");
+                var btnCat = $(".BOU.active").attr("id");
+                console.log(btnCat);
+                $(".PRODUTO").not("."+btnCat).addClass("d-none");
+                var catList = $(".CAT");
+                for (let i = 0; i < catList.length; i++){
+                    var valor = catList.eq(i).val();
+                    if (valor != "ppreco" && valor != "pepoca" && valor != "pgluten" && valor != "pfor" && valor != "palimento") {
+                        console.log(valor);
+                        if (valor != "asc" && valor != "des") {
+                            $(".PRODUTO").not("."+valor).addClass("d-none");
+                        }
+                        else if (valor == "asc") {
+                            var p = $(".PRODUTO").sort(function(a,b){
+                                var A = parseFloat( $(a).find(".PRECO").text() );
+                                var B = parseFloat( $(b).find(".PRECO").text() );
+                                if (A > B) {
+                                    return 1;
+                                }
+                                if (A < B) {
+                                    return -1;
+                                }
+                                if (A == B) {
+                                    return 0;
+                                }
+                            });
+                            $("#plist").empty();
+                            $("#plist").html(p);
+                        } else if (valor == "des") {
+                            var p = $(".PRODUTO").sort(function(a,b){
+                                var A = parseFloat( $(a).find(".PRECO").text() );
+                                var B = parseFloat( $(b).find(".PRECO").text() );
+                                if (A > B) {
+                                    return -1;
+                                }
+                                if (A < B) {
+                                    return 1;
+                                }
+                                if (A == B) {
+                                    return 0;
+                                }
+                            });
+                            $("#plist").empty();
+                            $("#plist").html(p);
                         }
                     }
-                });
+                }
+            });
+            $(".BOU").click(function(){
+                $(".PRODUTO").removeClass("d-none");
+                var btnCat = $(".BOU.active").attr("id");
+                console.log(btnCat);
+                $(".PRODUTO").not("."+btnCat).addClass("d-none");
+                var catList = $(".CAT");
+                for (let i = 0; i < catList.length; i++){
+                    var valor = catList.eq(i).val();
+                    if (valor != "ppreco" && valor != "pepoca" && valor != "pgluten" && valor != "pfor" && valor != "palimento") {
+                        if (valor != "asc" && valor != "des") {
+                            $(".PRODUTO").not("."+valor).addClass("d-none");
+                        }
+                        else if (valor == "asc") {
+                            var p = $(".PRODUTO").sort(function(a,b){
+                                var A = parseFloat( $(a).find(".PRECO").text() );
+                                var B = parseFloat( $(b).find(".PRECO").text() );
+                                if (A > B) {
+                                    return 1;
+                                }
+                                if (A < B) {
+                                    return -1;
+                                }
+                                if (A == B) {
+                                    return 0;
+                                }
+                            });
+                            $("#plist").empty();
+                            $("#plist").html(p);
+                        } else if (valor == "des") {
+                            var p = $(".PRODUTO").sort(function(a,b){
+                                var A = parseFloat( $(a).find(".PRECO").text() );
+                                var B = parseFloat( $(b).find(".PRECO").text() );
+                                if (A > B) {
+                                    return -1;
+                                }
+                                if (A < B) {
+                                    return 1;
+                                }
+                                if (A == B) {
+                                    return 0;
+                                }
+                            });
+                            $("#plist").empty();
+                            $("#plist").html(p);
+                        }
+                    }
+                }
+            });
+            $("#search").click(function(){
+                $(".PRODUTO").removeClass("d-none");
+                var S = $("#search").nextAll().val().trim().toLowerCase();
+                console.log(S);
+                var prod = $(".PRODUTO");
+                if (S != "") {
+                for(let i = 0; i < prod.length; i++){
+                    var nA = prod.eq(i).find(".NOME").text().trim().toLowerCase();
+                    console.log(nA);
+                    if (!(nA.includes(S))) {
+                        console.log("HIDE")
+                        prod.eq(i).addClass("d-none");
+                    }
+                }
+                }
+                var btnCat = $(".BOU.active").attr("id");
+                console.log(btnCat);
+                $(".PRODUTO").not("."+btnCat).addClass("d-none");
+                var catList = $(".CAT");
+                for (let i = 0; i < catList.length; i++){
+                    var valor = catList.eq(i).val();
+                    if (valor != "ppreco" && valor != "pepoca" && valor != "pgluten" && valor != "pfor" && valor != "palimento") {
+                        if (valor != "asc" && valor != "des") {
+                            $(".PRODUTO").not("."+valor).addClass("d-none");
+                        }
+                        else if (valor == "asc") {
+                            var p = $(".PRODUTO").sort(function(a,b){
+                                var A = parseFloat( $(a).find(".PRECO").text() );
+                                var B = parseFloat( $(b).find(".PRECO").text() );
+                                if (A > B) {
+                                    return 1;
+                                }
+                                if (A < B) {
+                                    return -1;
+                                }
+                                if (A == B) {
+                                    return 0;
+                                }
+                            });
+                            $("#plist").empty();
+                            $("#plist").html(p);
+                        } else if (valor == "des") {
+                            var p = $(".PRODUTO").sort(function(a,b){
+                                var A = parseFloat( $(a).find(".PRECO").text() );
+                                var B = parseFloat( $(b).find(".PRECO").text() );
+                                if (A > B) {
+                                    return -1;
+                                }
+                                if (A < B) {
+                                    return 1;
+                                }
+                                if (A == B) {
+                                    return 0;
+                                }
+                            });
+                            $("#plist").empty();
+                            $("#plist").html(p);
+                        }
+                    }
+                }
+                
             });
         </script>
         <!-- Jquery -->
