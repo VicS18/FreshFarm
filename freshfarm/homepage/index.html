@@ -25,13 +25,13 @@
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="../homepage/index.html"><i class="fas fa-home"></i> Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!"> <i class="fa fa-address-book" aria-hidden="true"></i> Contactos</a></li>
                     </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-light" type="submit">
+                    <div class="d-flex">
+                        <button class="btn btn-outline-light" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill" id="CARTNUM">0</span>
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -76,19 +76,19 @@
                     </div>
                 </div>
                 <div class="row gx-4 gx-lg-5">
-                    <div class="col-4 mb-2">
+                    <div class="col-4 col-sm-12 mb-2">
                         <h3> <span class="badge rounded-pill bg-success">Categorias</span></h3>
                     </div>
                 </div>
                 <div class="row gx-1 gx-lg-2">
-                    <div class="col-2 mb-2">
+                    <div class="col-12 col-sm-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="ppreco">[Por preço]</option>
                             <option value="asc">Ascendente</option>
                             <option value="des">Descendente</option>
                           </select>
                     </div>
-                    <div class="col-2 mb-2">
+                    <div class="col-12 col-sm-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="pepoca">[Por época]</option>
                             <option value="jan">Janeiro</option>
@@ -105,21 +105,21 @@
                             <option value="dez">Dezembro</option>
                           </select>
                     </div>
-                    <div class="col-2 mb-2">
+                    <div class="col-12 col-sm-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="pgluten">[Glúten]</option>
                             <option value="cglut">Com glúten</option>
                             <option value="sglut">Sem glúten</option>
                           </select>
                     </div>
-                    <div class="col-2 mb-2">
+                    <div class="col-12 col-sm-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="pfor">[Por fornecedor]</option>
                             <option value="for1">Fornecedor 1</option>
                             <option value="for2">Fornecedor 2</option>
                           </select>
                     </div>
-                    <div class="col-2 mb-2">
+                    <div class="col-12 col-sm-2 mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="palimento">[Por tipo de alimento]</option>
                             <option value="cereal">Cereais, pães e tubérculos</option>
@@ -132,7 +132,7 @@
                 </div>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center" id="plist">
                     <div class="PRODUTO col mb-5 jan fev mar abr mai jun jul ago set out nov dez cglut for1 cereal epoca veg bio">
-                        <div class="card h-80">
+                        <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" src="https://hortaemcasa.pt/wp-content/uploads/2021/11/batata-assar_r5lqck.jpg" alt="..." />
                             <!-- Product details-->
@@ -141,15 +141,17 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder NOME">Batatas</h5>
                                     <!-- Product price-->
-                                    <span class="PRECO">1.49</span><span>€</span>
+                                    <span class="PRECO">0.20</span><span>€</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto ADDBTN" href="#">Adicionar</a>
+                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM"></div>
+                                
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/batatas.html">View more</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/batatas.html">Ver mais</a></div>
                             </div>
                             <div class="card-footer p-4 pt-0 bg-transparent">
                                 <div class="text-center">
@@ -160,7 +162,7 @@
                         </div>
                     </div>
                     <div class="PRODUTO col mb-5 jan fev mar abr jun jul ago set out nov dez sglut for1 horta veg bio">
-                        <div class="card h-80">
+                        <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" src="img\couve.jpg" alt="..." />
                             <!-- Product details-->
@@ -169,15 +171,16 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder NOME">Couve</h5>
                                     <!-- Product price-->
-                                    <span class="PRECO">0.99</span><span>€</span>
+                                    <span class="PRECO">0.35</span><span>€</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto ADDBTN" href="#">Adicionar</a>
+                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM"></div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/couve.html">View more</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/couve.html">Ver mais</a></div>
                             </div>
                             <div class="card-footer p-4 pt-0 bg-transparent">
                                 <div class="text-center">
@@ -186,8 +189,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="PRODUTO col mb-5 jan fev mar abr ago set out nov dez sglut for2 epoca bio veg">
-                        <div class="card h-80">
+                    <div class="PRODUTO col mb-5 jan fev mar abr ago set out nov dez sglut for2 epoca bio veg fruta">
+                        <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" src="img\maca.jpg" alt="..." />
                             <!-- Product details-->
@@ -196,15 +199,16 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder NOME">Maçãs</h5>
                                     <!-- Product price-->
-                                    <span class="PRECO">1.99</span><span>€</span>
+                                    <span class="PRECO">0.45</span><span>€</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto ADDBTN" href="#">Adicionar</a>
+                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM"></div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/maçãs.html">View more</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/maçãs.html">Ver mais</a></div>
                             </div>
                             <div class="card-footer p-4 pt-0 bg-transparent">
                                 <div class="text-center">
@@ -214,8 +218,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="PRODUTO col mb-5 jan fev mar abr mai jun jul ago set out nov dez cglut for1 horta epoca veg bio">
-                        <div class="card h-80">
+                    <div class="PRODUTO col mb-5 jan fev mar abr mai jun jul ago set out nov dez cglut for1 cereal epoca veg bio">
+                        <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" src="img\cenoura.jpg" alt="..." />
                             <!-- Product details-->
@@ -224,15 +228,16 @@
                                     <!-- Product name-->
                                     <h5 class="fw-bolder NOME">Cenouras</h5>
                                     <!-- Product price-->
-                                    <span class="PRECO">0.49</span><span>€</span>
+                                    <span class="PRECO">0.30</span><span>€</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto ADDBTN" href="#">Adicionar</a>
+                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM"></div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/cenoura.html">View more</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/cenoura.html">Ver mais</a></div>
                             </div>
                             <div class="card-footer p-4 pt-0 bg-transparent">
                                 <div class="text-center">
@@ -245,6 +250,61 @@
                 </div>
             </div>
         </section>
+        <!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success">
+          <h5 class="modal-title text-white" id="staticBackdropLabel"><i class="fas fa-shopping-cart"></i> Carrinho de Compras</h5>
+          <button type="button" class="text-white btn btn-dark" data-bs-dismiss="modal" aria-label="Close"><h4><i class="far fa-times-circle"></i></h4></button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-9">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Preço</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col"></th>
+                              </tr>
+                            </thead>
+                            <tbody id="CARTLIST">
+                              <tr>
+                                <th scope="row">Abóbora</th>
+                                <td>0</td>
+                                <td>0</td>
+                                <td><button type="button" class="btn btn-danger DELBTN float-end"><i class="fas fa-trash"></i></button></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                    <div class="col-12 col-sm-3">
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th scope="col">Total</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td id="TOTALPRICE"></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-info rounded-pill text-white">Finalizar Compras</button>
+        </div>
+      </div>
+    </div>
+  </div>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; FreshFarm 2021</p></div>
@@ -257,6 +317,10 @@
 			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 			  crossorigin="anonymous"></script>
         <script>
+            $(".ADDBTN").click(function(){
+                var E = event.target;
+                var namE = $(E).parentsUntil("#plist").find(".NOME");
+            });
             $("select").change(function (){
                 $(".PRODUTO").removeClass("d-none");
                 var btnCat = $(".BOU.active").attr("id");
