@@ -147,7 +147,7 @@
                             <!-- Product actions-->
                             <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto ADDBTN" href="#">Adicionar</a>
-                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM"></div>
+                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM" value="0"></div>
                                 
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
@@ -177,7 +177,7 @@
                             <!-- Product actions-->
                             <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto ADDBTN" href="#">Adicionar</a>
-                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM"></div>
+                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM" value="0"></div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/couve.html">Ver mais</a></div>
@@ -205,7 +205,7 @@
                             <!-- Product actions-->
                             <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto ADDBTN" href="#">Adicionar</a>
-                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM"></div>
+                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM" value="0"></div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/maçãs.html">Ver mais</a></div>
@@ -234,7 +234,7 @@
                             <!-- Product actions-->
                             <div class="card-footer p-2 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto ADDBTN" href="#">Adicionar</a>
-                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM"></div>
+                                    <input type="number" min="0" max="150" size="1" class="INPUTNUM"value="0"></div>
                             </div>
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="../shop-item/cenoura.html">Ver mais</a></div>
@@ -290,7 +290,7 @@
                             </thead>
                             <tbody>
                               <tr>
-                                <td id="TOTALPRICE"></td>
+                                <td><span id="TOTALPRICE">0.00</span><span>€</span></td>
                               </tr>
                             </tbody>
                           </table>
@@ -319,7 +319,30 @@
         <script>
             $(".ADDBTN").click(function(){
                 var E = event.target;
-                var namE = $(E).parentsUntil("#plist").find(".NOME");
+                var namE = $(E).parentsUntil("#plist").find(".NOME").text();
+                var pricE = parseFloat( $(E).parentsUntil("#plist").find(".PRECO").text() );
+                var quanT = parseInt( $(E).nextAll().val() );
+                console.log(pricE);
+                console.log(quanT);
+                if (quanT > 0) {
+                    $("#CARTNUM").text(parseInt ( $("#CARTNUM").text() ) + quanT);
+                    $("#TOTALPRICE").text( parseFloat( $("#TOTALPRICE").text() ) + quanT * pricE);
+
+                    if ($("#" + namE).length == 0) {
+                    $("#CARTLIST").append("<tr><th scope='row'>" + namE + "</th><td class='mP'>" + pricE + "€" + "</td><td id='Q' class='QUA'>" + quanT + "</td><td><button type='button' class='btn btn-danger DELBTN float-end'><i class='fas fa-trash'></i></button></td></tr>");
+                    $("#Q").attr("id", namE);
+                    }
+                    else{
+                        $("#" + namE).text( parseInt( $("#" + namE).text() ) + quanT );
+                    }
+                }
+            });
+            $(".DELBTN").click(function(){
+                var E = event.target;
+                var deL = $(E).parentsUntil("#CARTLIST");
+                console.log(deL);
+                $("#TOTALPRICE").text( parseFloat( $("#TOTALPRICE").text() ) - ( parseFloat( $(deL).find(".mP").text().replaceAll("€", "") ) * parseInt( $(deL).find(".QUA").text() ) )  );
+                $(del).remove();
             });
             $("select").change(function (){
                 $(".PRODUTO").removeClass("d-none");
