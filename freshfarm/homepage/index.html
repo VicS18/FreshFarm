@@ -292,7 +292,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <a href="../payment/pagamento.html"><button type="button" class="btn btn-info rounded-pill text-white">Finalizar Compras</button>
+          <a id="FINA" href=""><button type="button" disabled class="btn btn-primary rounded-pill text-white">Finalizar Compras</button></a>
         </div>
       </div>
     </div>
@@ -331,6 +331,15 @@
                         $("#" + namE).text( parseInt( $("#" + namE).text() ) + quanT );
                     }
                 }
+                if ( $("#CARTLIST tr").length == 0) {
+                    var F = $("#FINA");
+                    $(F).attr('href', '');
+                    $(F).children().prop('disabled', true);
+                } else {
+                    var F = $("#FINA");
+                    $(F).attr('href', '../payment/pagamento.html');
+                    $(F).children().prop('disabled', false);
+                }
             });
             $("#CARTLIST").on("click", ".DELBTN", function(){
                 var E = event.target;
@@ -339,6 +348,15 @@
                 $("#TOTALPRICE").text( ( parseFloat( $("#TOTALPRICE").text() ) - ( parseFloat( $(deL).find(".mP").text().replaceAll("€", "") ) * parseInt( $(deL).find(".QUA").text() ) )  ).toFixed(2).replaceAll("-",""));
                 $("#CARTNUM").text( parseInt( $("#CARTNUM").text() ) - parseInt( $(deL).find(".QUA").text() ));
                 $(deL).remove();
+                if ( $("#CARTLIST tr").length == 0) {
+                    var F = $("#FINA");
+                    $(F).attr('href', '');
+                    $(F).children().prop('disabled', true);
+                } else {
+                    var F = $("#FINA");
+                    $(F).attr('href', '../payment/pagamento.html');
+                    $(F).children().prop('disabled', false);
+                }
             });
             $("select").change(function (){
                 $(".PRODUTO").removeClass("d-none");
