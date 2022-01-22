@@ -40,7 +40,7 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">FreshFarm</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Os melhores produtos frescos e da época</p>
+                    <p class="lead fw-normal text-white-50 mb-0">Os melhores produtos frescos de época</p>
                 </div>
             </div>
         </header>
@@ -67,7 +67,10 @@
                     </div>
                 </div>
                 <div class="row gx-4 gx-lg-5">
-                    <div class="col-4 mb-2">
+                    <div class="col-4 col-sm mb-2">
+                        <h3> <span class="badge rounded-pill bg-success">Categorias</span></h3>
+                    </div>
+                    <div class="col-4 mb-2 offset-md-4">
                         <div class="input-group mb-3">
                             <!-- Search Bar -->
                             <button class="btn btn-outline-secondary" type="button" id="search"><i class="fas fa-search"></i></button>
@@ -75,20 +78,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="row gx-4 gx-lg-5">
-                    <div class="col-4 col-sm-12 mb-2">
-                        <h3> <span class="badge rounded-pill bg-success">Categorias</span></h3>
-                    </div>
-                </div>
                 <div class="row gx-1 gx-lg-2">
-                    <div class="col-12 col-sm-2 mb-2">
+                    <div class="col-12 col-sm mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="ppreco">[Por preço]</option>
                             <option value="asc">Ascendente</option>
                             <option value="des">Descendente</option>
                           </select>
                     </div>
-                    <div class="col-12 col-sm-2 mb-2">
+                    <div class="col-12 col-sm mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="pepoca">[Por época]</option>
                             <option value="jan">Janeiro</option>
@@ -105,21 +103,21 @@
                             <option value="dez">Dezembro</option>
                           </select>
                     </div>
-                    <div class="col-12 col-sm-2 mb-2">
+                    <div class="col-12 col-sm mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="pgluten">[Glúten]</option>
                             <option value="cglut">Com glúten</option>
                             <option value="sglut">Sem glúten</option>
                           </select>
                     </div>
-                    <div class="col-12 col-sm-2 mb-2">
+                    <div class="col-12 col-sm mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="pfor">[Por fornecedor]</option>
                             <option value="for1">Fornecedor 1</option>
                             <option value="for2">Fornecedor 2</option>
                           </select>
                     </div>
-                    <div class="col-12 col-sm-2 mb-2">
+                    <div class="col-12 col-sm mb-2">
                         <select class="form-select CAT" aria-label="Default select example">
                             <option selected value="palimento">[Por tipo de alimento]</option>
                             <option value="cereal">Cereais, pães e tubérculos</option>
@@ -272,12 +270,6 @@
                               </tr>
                             </thead>
                             <tbody id="CARTLIST">
-                              <tr>
-                                <th scope="row">Abóbora</th>
-                                <td>0</td>
-                                <td>0</td>
-                                <td><button type="button" class="btn btn-danger DELBTN float-end"><i class="fas fa-trash"></i></button></td>
-                              </tr>
                             </tbody>
                           </table>
                     </div>
@@ -317,6 +309,9 @@
 			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 			  crossorigin="anonymous"></script>
         <script>
+            $(document).ready(function(){
+                $(".PRODUTO").not(".epoca").addClass("d-none");
+
             $(".ADDBTN").click(function(){
                 var E = event.target;
                 var namE = $(E).parentsUntil("#plist").find(".NOME").text();
@@ -326,10 +321,10 @@
                 console.log(quanT);
                 if (quanT > 0) {
                     $("#CARTNUM").text(parseInt ( $("#CARTNUM").text() ) + quanT);
-                    $("#TOTALPRICE").text( parseFloat( $("#TOTALPRICE").text() ) + quanT * pricE);
+                    $("#TOTALPRICE").text( ( parseFloat( $("#TOTALPRICE").text() ) + quanT * pricE ).toFixed(2));
 
                     if ($("#" + namE).length == 0) {
-                    $("#CARTLIST").append("<tr><th scope='row'>" + namE + "</th><td class='mP'>" + pricE + "€" + "</td><td id='Q' class='QUA'>" + quanT + "</td><td><button type='button' class='btn btn-danger DELBTN float-end'><i class='fas fa-trash'></i></button></td></tr>");
+                    $("#CARTLIST").append("<tr><th scope='row'>" + namE + "</th><td class='mP'>" + pricE.toFixed(2) + "€" + "</td><td id='Q' class='QUA'>" + quanT + "</td><td><button type='button' class='btn btn-danger DELBTN float-end'><i class='fas fa-trash'></i></button></td></tr>");
                     $("#Q").attr("id", namE);
                     }
                     else{
@@ -337,12 +332,13 @@
                     }
                 }
             });
-            $(".DELBTN").click(function(){
+            $("#CARTLIST").on("click", ".DELBTN", function(){
                 var E = event.target;
+                console.log(E);
                 var deL = $(E).parentsUntil("#CARTLIST");
-                console.log(deL);
-                $("#TOTALPRICE").text( parseFloat( $("#TOTALPRICE").text() ) - ( parseFloat( $(deL).find(".mP").text().replaceAll("€", "") ) * parseInt( $(deL).find(".QUA").text() ) )  );
-                $(del).remove();
+                $("#TOTALPRICE").text( ( parseFloat( $("#TOTALPRICE").text() ) - ( parseFloat( $(deL).find(".mP").text().replaceAll("€", "") ) * parseInt( $(deL).find(".QUA").text() ) )  ).toFixed(2).replaceAll("-",""));
+                $("#CARTNUM").text( parseInt( $("#CARTNUM").text() ) - parseInt( $(deL).find(".QUA").text() ));
+                $(deL).remove();
             });
             $("select").change(function (){
                 $(".PRODUTO").removeClass("d-none");
@@ -503,6 +499,7 @@
                 }
                 
             });
+        });
         </script>
         <!-- Jquery -->
         
