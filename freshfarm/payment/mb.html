@@ -61,13 +61,16 @@
                     <div class="col-4 mb-5 text-center">
                         <div class="input-group mb-3">
                             <span class="input-group-text bg-success text-white" id="basic-addon1">+351</span>
-                            <input type="text" class="form-control" placeholder="O seu nº de telemóvel" aria-label="Telemóvel" aria-describedby="basic-addon1">
+                            <input id="NUM" type="text" class="form-control" placeholder="O seu nº de telemóvel" aria-label="Telemóvel" aria-describedby="basic-addon1">
+                          </div>
+                          <div class="text-danger d-none">
+                            <i class="fas fa-exclamation-triangle"></i> Erro! Número de telemóvel inválido!
                           </div>
                     </div>
                 </div>
                 <div class="row gx-4 gx-lg-5 justify-content-center align-items-center">
                     <div class="col-4 mb-5 text-center">
-                        <a href="embalagem.html"><button type="button" class="btn btn-primary"><h3>Efetuar compra</h3></button></a>
+                        <button type="button" class="btn btn-primary SUBBTN"><h3>Efetuar compra</h3></button>
                     </div>
                 </div>
             </div>
@@ -84,6 +87,33 @@
 			  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
 			  crossorigin="anonymous"></script>
         <!-- Jquery -->
-        
+        <script>
+            $(document).ready(function(){
+                function checkStrin(B)
+            {
+                if(B.match(/^[0-9]+$/) != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+                $("body").on('click','.SUBBTN',function(){
+                    var retVal = true;
+                    var nuM = $("#NUM").val().trim()
+                    if (checkStrin(nuM) === false) {
+                        retVal = false;
+                        $(".text-danger").removeClass("d-none");
+                    } else {
+                        $(".text-danger").addClass("d-none");
+                    }
+                    if (retVal === true) {
+                        window.location = "embalagem.html";
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
