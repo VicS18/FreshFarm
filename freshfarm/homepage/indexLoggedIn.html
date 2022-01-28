@@ -23,13 +23,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="../homepage/index.html"><i class="fas fa-home"></i> Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!"> <i class="fa fa-address-book" aria-hidden="true"></i> Contactos</a></li>                    
+                        <li class="nav-item"><a class="nav-link" href="../payment/encomenda.html"> <i class="fa fa-dropbox" aria-hidden="true"></i> Encomendas</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!"> <i class="fa fa-address-book" aria-hidden="true"></i> Contactos</a></li>
                     </ul>
                     <div class="d-flex">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                            <li class="nav-item border-end"><a class="nav-link" href="loginPrompt.html"> <i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#!"> <i class="fa fa-plus" aria-hidden="true"></i>Criar conta</a></li>
-                        </ul>                    
+                            <li class="nav-item border-end"><a class="nav-link active" href="#!"> <i class="fa fa-user" aria-hidden="true"></i>Eduardo Martins</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html"> <i class="fas fa-sign-out-alt"></i>Terminar Sessão</a></li>
+                        </ul>  
                         <button class="btn btn-outline-light" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
@@ -296,7 +297,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <a id="FINA" href="loginPrompt.html"><button type="button" disabled class="btn btn-primary rounded-pill text-white">Finalizar Compras</button></a>
+          <a id="FINA" href=""><button type="button" disabled class="btn btn-primary rounded-pill text-white">Finalizar Compras</button></a>
         </div>
       </div>
     </div>
@@ -335,6 +336,15 @@
                         $("#" + namE).text( parseInt( $("#" + namE).text() ) + quanT );
                     }
                 }
+                if ( $("#CARTLIST tr").length == 0) {
+                    var F = $("#FINA");
+                    $(F).attr('href', '');
+                    $(F).children().prop('disabled', true);
+                } else {
+                    var F = $("#FINA");
+                    $(F).attr('href', '../payment/pagamento.html');
+                    $(F).children().prop('disabled', false);
+                }
             });
             $("#CARTLIST").on("click", ".DELBTN", function(){
                 var E = event.target;
@@ -343,6 +353,15 @@
                 $("#TOTALPRICE").text( ( parseFloat( $("#TOTALPRICE").text() ) - ( parseFloat( $(deL).find(".mP").text().replaceAll("€", "") ) * parseInt( $(deL).find(".QUA").text() ) )  ).toFixed(2).replaceAll("-",""));
                 $("#CARTNUM").text( parseInt( $("#CARTNUM").text() ) - parseInt( $(deL).find(".QUA").text() ));
                 $(deL).remove();
+                if ( $("#CARTLIST tr").length == 0) {
+                    var F = $("#FINA");
+                    $(F).attr('href', '');
+                    $(F).children().prop('disabled', true);
+                } else {
+                    var F = $("#FINA");
+                    $(F).attr('href', '../payment/pagamento.html');
+                    $(F).children().prop('disabled', false);
+                }
             });
             $("select").change(function (){
                 $(".PRODUTO").removeClass("d-none");
